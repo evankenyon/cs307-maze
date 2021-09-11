@@ -17,23 +17,11 @@ import maze.util.Randomness;
 public class Magic extends SearchAlgorithm {
 	public static final String TITLE = "Magic";
 
-	private Maze myMaze;
 	// data structure used to keep search frontier -- use a priority queue
-	private PriorityQueue<Spot> myFrontier;
-	// current spot being explored
-	private Spot myCurrent;
-	// trail of all spots can be used to recreate chosen path
-	private Map<Spot, Spot> myPaths;
-
-
 	public Magic (Maze maze) {
-		super(TITLE);
-		myMaze = maze;
+		super(TITLE, maze);
 		myFrontier = new PriorityQueue<>();
-		myCurrent = maze.getStart();
-		myCurrent.markAsPath();
-		myFrontier.add(myCurrent);
-		myPaths = new HashMap<>();
+		((PriorityQueue<Spot>) getMyFrontier()).add(myCurrent);
 	}
 
 	/**
@@ -58,26 +46,11 @@ public class Magic extends SearchAlgorithm {
 		}
 		else {
 			myCurrent.markAsVisited();
-			myFrontier.remove();
+			((PriorityQueue<Spot>) getMyFrontier()).remove();
 		}
 		// update current spot
-		myCurrent = myFrontier.peek();
+		myCurrent = ((PriorityQueue<Spot>) getMyFrontier()).peek();
 		return false;
 	}
 
-
-	// Search is successful if current spot is the goal.
-	// Search is unsuccessful if there are no more frontier spots to consider
-	private boolean isSearchOver () {
-		return myFrontier.isEmpty() || (myCurrent != null && myCurrent.equals(myMaze.getGoal()));
-	}
-
-	// When the search is over, color the chosen correct path using trail of successful spots
-	private void markPath() {
-		Spot step = myMaze.getGoal();
-		while (step != null) {
-			step.markAsPath();
-			step = myPaths.get(step);
-		}
-	}
 }

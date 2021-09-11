@@ -16,16 +16,9 @@ public class RandomWalk extends SearchAlgorithm {
 	public static final String TITLE = "Random Walk";
 	public final double EXPLORE_BIAS = 0.999;
 
-	private Maze myMaze;
-	// search frontier - current spot being explored
-	private Spot myCurrent;
-
 
 	public RandomWalk (Maze maze) {
-		super(TITLE);
-		myMaze = maze;
-		myCurrent = maze.getStart();
-		myCurrent.markAsPath();
+		super(TITLE, maze);
 	}
 
 	/**
@@ -61,10 +54,4 @@ public class RandomWalk extends SearchAlgorithm {
 		return isSearchOver();
 	}
 
-
-	// Search is over and unsuccessful if there are no more fringe points to consider.
-	// Search is over and successful if the current point is the same as the goal.
-	private boolean isSearchOver () {
-		return myCurrent != null && myCurrent.equals(myMaze.getGoal());
-	}
 }
