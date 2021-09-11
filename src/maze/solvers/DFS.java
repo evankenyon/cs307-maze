@@ -17,7 +17,7 @@ public class DFS extends SearchAlgorithm {
 	public DFS (Maze maze) {
 		super(TITLE, maze);
 		myFrontier = new Stack<>();
-		((Stack<Spot>) getMyFrontier()).push(myCurrent);
+		((Stack<Spot>) myFrontier).push(myCurrent);
 	}
 
 	/**
@@ -30,17 +30,24 @@ public class DFS extends SearchAlgorithm {
 		// choose next spot to explore
 		Spot next = chooseNextSpot(neighbors);
 		// mark next step, if it exists
+		markNextStep(next);
+		// update current spot
+		return updateCurrentSpot();
+	}
+
+	private boolean updateCurrentSpot() {
+		myCurrent = ((Stack<Spot>) getMyFrontier()).peek();
+		return isSearchOver();
+	}
+
+	private void markNextStep(Spot next) {
 		if (next != null) {
 			next.markAsPath();
-//			myFrontier.push(next);
-			myFrontier.add(next);
+			((Stack<Spot>) myFrontier).push(next);
 		}
 		else {
 			myCurrent.markAsVisited();
-			((Stack<Spot>) getMyFrontier()).pop();
+			((Stack<Spot>) myFrontier).pop();
 		}
-		// update current spot
-		myCurrent = ((Stack<Spot>) getMyFrontier()).peek();
-		return isSearchOver();
 	}
 }

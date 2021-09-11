@@ -14,7 +14,7 @@ import java.util.Map;
  *
  * @author YOUR NAME HERE
  */
-public class SearchAlgorithm {
+public abstract class SearchAlgorithm {
 	// name for this search algorithm
 	private final String myDescription;
 
@@ -57,7 +57,6 @@ public class SearchAlgorithm {
 	protected void markPath () {
 		Spot step = myMaze.getGoal();
 		while (step != null) {
-			step.markAsPath();
 			step = myPaths.get(step);
 		}
 	}
@@ -74,19 +73,6 @@ public class SearchAlgorithm {
 	protected Collection<Spot> getMyFrontier() {
 		return myFrontier;
 	}
-
-//	protected void markNextStep(Spot next) {
-//		if (next != null) {
-//			next.markAsPath();
-//			myFrontier.add(next);
-//			myPaths.put(next, myCurrent);
-//		}
-//		else {
-//			myCurrent.markAsVisited();
-//			myFrontier.remove();
-//		}
-//	}
-
 
 	// Search is over and unsuccessful if there are no more fringe points to consider.
 	// Search is over and successful if the current point is the same as the goal.

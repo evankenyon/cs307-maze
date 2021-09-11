@@ -132,6 +132,7 @@ public class MazeDisplay {
 
 	// Take action based on user's input
 	private void handleKeyInput (KeyCode code) {
+		System.out.println("NEW ALGORITHM\n\n\n\n\n\n\n");
 		// NEW Java 14 syntax that some prefer (but watch out for the many special cases!)
 		//   https://blog.jetbrains.com/idea/2019/02/java-12-and-intellij-idea/
 		switch (code) {

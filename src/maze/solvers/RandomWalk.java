@@ -26,29 +26,46 @@ public class RandomWalk extends SearchAlgorithm {
 	 */
 	@Override
 	public boolean step () {
-		// find possible next steps
 		List<Spot> neighbors = myMaze.getNeighbors(myCurrent);
-		// choose next spot to explore
-		Spot next = null;
-		List<Spot> empties = new ArrayList<>();
-		List<Spot> possibles = new ArrayList<>();
-		for (Spot spot : neighbors) {
-			if (spot.getState() == Spot.EMPTY) {
-				empties.add(spot);
-			}
-			if (spot.getState() != Spot.WALL) {
-				possibles.add(spot);
-			}
-		}
-		// prefer exploring empty paths over visited ones
-		if (! empties.isEmpty() && Randomness.isRandomEnough(EXPLORE_BIAS)) {
-			next = Randomness.getRandomElement(empties);
-		}
-		// guaranteed to be at least one possible, even if it is last spot visited
-		next = Randomness.getRandomElement(possibles);
-		// mark next step
+		List<Spot> empties = getEmptySpots(neighbors);
+		List<Spot> possibles = getPossibleSpots(neighbors);
+		Spot next = getNextSpot(empties, possibles);
 		next.markAsPath();
-		// update current spot
+		return updateCurrentSpot(next);
+	}
+
+	private Spot getNextSpot(List<Spot> empties, List<Spot> possibles) {
+		Spot next;
+		// prefer exploring empty paths over visited ones
+		if (!empties.isEmpty() && Randomness.isRandomEnough(EXPLORE_BIAS)) {
+			next = Randomness.getRandomElement(empties);
+		} else {
+			// guaranteed to be at least one possible, even if it is last spot visited
+			next = Randomness.getRandomElement(possibles);
+		}
+		return next;
+	}
+
+	private List<Spot> getEmptySpots(List<Spot> neighbors) {
+		List<Spot> emptySpots = new ArrayList<>();
+		for(Spot spot: neighbors) {
+			if(spot.getState() == Spot.EMPTY) {
+				emptySpots.add(spot);
+			}
+		}
+		return emptySpots;
+	}
+
+	private List<Spot> getPossibleSpots(List<Spot> neighbors) {
+		List<Spot> possibleSpots = new ArrayList<>();
+		for(Spot spot: neighbors) {
+			if(spot.getState() != Spot.WALL) {
+				possibleSpots.add(spot);
+			}
+		}
+		return possibleSpots;
+	}
+	private boolean updateCurrentSpot(Spot next) {
 		myCurrent.markAsVisited();
 		myCurrent = next;
 		return isSearchOver();
