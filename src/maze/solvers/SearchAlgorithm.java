@@ -24,6 +24,7 @@ public abstract class SearchAlgorithm {
 	protected Maze myMaze;
 	protected int currMyFrontierSize;
 	protected int maxMyFrontierSize;
+	protected int numBacktracks;
 	// trail of all spots can be used to recreate chosen path
 	protected Map<Spot, Spot> myPaths;
 
@@ -38,6 +39,7 @@ public abstract class SearchAlgorithm {
 		myPaths = new HashMap<>();
 		currMyFrontierSize = 0;
 		maxMyFrontierSize = 0;
+		numBacktracks = 0;
 	}
 
 	/**
@@ -62,6 +64,10 @@ public abstract class SearchAlgorithm {
 
 	public boolean isSearchSuccessful() {
 		return (currSpot != null && currSpot.equals(myMaze.getGoal()));
+	}
+
+	public int getNumBacktracks() {
+		return numBacktracks;
 	}
 
 	// When the search is over, color the chosen correct path using trail of successful spots

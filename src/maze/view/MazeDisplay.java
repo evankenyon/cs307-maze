@@ -132,13 +132,12 @@ public class MazeDisplay {
 
 	// Take action based on user's input
 	private void handleKeyInput (KeyCode code) {
-		System.out.println("NEW ALGORITHM\n\n\n\n\n\n\n");
 		// NEW Java 14 syntax that some prefer (but watch out for the many special cases!)
 		//   https://blog.jetbrains.com/idea/2019/02/java-12-and-intellij-idea/
 		switch (code) {
 			case N -> newMaze();
 			case S -> step();
-			case SPACE -> togglePause();
+			case P -> togglePause();
 			case D -> setSearch(new DFS(myMaze));
 			case B -> setSearch(new BFS(myMaze));
 			case G -> setSearch(new Greedy(myMaze));
