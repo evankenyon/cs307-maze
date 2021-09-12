@@ -20,9 +20,10 @@ public abstract class SearchAlgorithm {
 
 	// data structure used to keep search frontier
 	protected Collection<Spot> myFrontier;
-	// current spot being explored
-	protected Spot myCurrent;
+	protected Spot currSpot;
 	protected Maze myMaze;
+	protected int currMyFrontierSize;
+	protected int maxMyFrontierSize;
 	// trail of all spots can be used to recreate chosen path
 	protected Map<Spot, Spot> myPaths;
 
@@ -32,9 +33,11 @@ public abstract class SearchAlgorithm {
 	public SearchAlgorithm (String description, Maze maze) {
 		myMaze = maze;
 		myDescription = description;
-		myCurrent = maze.getStart();
-		myCurrent.markAsPath();
+		currSpot = maze.getStart();
+		currSpot.markAsPath();
 		myPaths = new HashMap<>();
+		currMyFrontierSize = 0;
+		maxMyFrontierSize = 0;
 	}
 
 	/**
@@ -51,6 +54,14 @@ public abstract class SearchAlgorithm {
 	@Override
 	public String toString () {
 		return myDescription;
+	}
+
+	public int getMaxMyFrontierSize() {
+		return maxMyFrontierSize;
+	}
+
+	public boolean isSearchSuccessful() {
+		return (currSpot != null && currSpot.equals(myMaze.getGoal()));
 	}
 
 	// When the search is over, color the chosen correct path using trail of successful spots
@@ -77,6 +88,17 @@ public abstract class SearchAlgorithm {
 	// Search is over and unsuccessful if there are no more fringe points to consider.
 	// Search is over and successful if the current point is the same as the goal.
 	protected boolean isSearchOver () {
-		return myFrontier.isEmpty() || (myCurrent != null && myCurrent.equals(myMaze.getGoal()));
+		return myFrontier.isEmpty() || isSearchSuccessful();
+	}
+
+	protected void incrementCurrMyFrontierSize() {
+		currMyFrontierSize++;
+		if(currMyFrontierSize > maxMyFrontierSize) {
+			maxMyFrontierSize = currMyFrontierSize;
+		}
+	}
+
+	protected void decrementCurrMyFrontierSize() {
+		currMyFrontierSize--;
 	}
 }

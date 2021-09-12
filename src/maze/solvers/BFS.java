@@ -17,7 +17,8 @@ public class BFS extends QueueSearchAlgorithm {
 	public BFS (Maze maze) {
 		super(TITLE, maze);
 		myFrontier = new LinkedList<>();
-		myFrontier.add(myCurrent);
+		myFrontier.add(currSpot);
+		incrementCurrMyFrontierSize();
 	}
 
 	/**
@@ -29,7 +30,7 @@ public class BFS extends QueueSearchAlgorithm {
 			return true;
 		}
 		// find possible next steps
-		List<Spot> neighbors = myMaze.getNeighbors(myCurrent);
+		List<Spot> neighbors = myMaze.getNeighbors(currSpot);
 		Spot next = chooseNextSpot(neighbors);
 		markNextStep(next);
 		updateCurrentSpot();

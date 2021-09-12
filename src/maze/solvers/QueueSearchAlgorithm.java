@@ -29,16 +29,18 @@ public abstract class QueueSearchAlgorithm extends SearchAlgorithm{
         if (next != null) {
             next.markAsPath();
             myFrontier.add(next);
-            myPaths.put(next, myCurrent);
+            incrementCurrMyFrontierSize();
+            myPaths.put(next, currSpot);
         }
         else {
-            myCurrent.markAsVisited();
+            currSpot.markAsVisited();
             ((Queue<Spot>) getMyFrontier()).remove();
+            decrementCurrMyFrontierSize();
         }
     }
 
     protected boolean updateCurrentSpot() {
-        myCurrent = ((Queue<Spot>) getMyFrontier()).peek();
+        currSpot = ((Queue<Spot>) getMyFrontier()).peek();
         return false;
     }
 }

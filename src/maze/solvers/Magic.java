@@ -22,9 +22,10 @@ public class Magic extends QueueSearchAlgorithm {
 	public Magic (Maze maze) {
 		super(TITLE, maze);
 		myFrontier = new PriorityQueue<>();
-		((PriorityQueue<Spot>) myFrontier).add(myCurrent);
+		((PriorityQueue<Spot>) myFrontier).add(currSpot);
 		visitedSpots = new ArrayList<Spot>();
-		visitedSpots.add(myCurrent);
+		visitedSpots.add(currSpot);
+		incrementCurrMyFrontierSize();
 	}
 
 	/**
@@ -37,7 +38,7 @@ public class Magic extends QueueSearchAlgorithm {
 			return true;
 		}
 		// find possible next steps
-		List<Spot> neighbors = myMaze.getNeighbors(myCurrent);
+		List<Spot> neighbors = myMaze.getNeighbors(currSpot);
 		// choose next spot to explore -- magic means next spot could be a wall!
 		Spot next = chooseNextSpot(neighbors);
 		markNextStep(next);

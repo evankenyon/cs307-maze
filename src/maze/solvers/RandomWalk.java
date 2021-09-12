@@ -2,6 +2,8 @@ package maze.solvers;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
+
 import maze.model.Maze;
 import maze.model.Spot;
 import maze.util.Randomness;
@@ -19,6 +21,9 @@ public class RandomWalk extends SearchAlgorithm {
 
 	public RandomWalk (Maze maze) {
 		super(TITLE, maze);
+		myFrontier = new Stack<>();
+		((Stack<Spot>) myFrontier).push(currSpot);
+		incrementCurrMyFrontierSize();
 	}
 
 	/**
@@ -26,7 +31,7 @@ public class RandomWalk extends SearchAlgorithm {
 	 */
 	@Override
 	public boolean step () {
-		List<Spot> neighbors = myMaze.getNeighbors(myCurrent);
+		List<Spot> neighbors = myMaze.getNeighbors(currSpot);
 		List<Spot> empties = getEmptySpots(neighbors);
 		List<Spot> possibles = getPossibleSpots(neighbors);
 		Spot next = getNextSpot(empties, possibles);
@@ -66,8 +71,10 @@ public class RandomWalk extends SearchAlgorithm {
 		return possibleSpots;
 	}
 	private boolean updateCurrentSpot(Spot next) {
-		myCurrent.markAsVisited();
-		myCurrent = next;
+		currSpot.markAsVisited();
+		currSpot = next;
+		((Stack<Spot>) myFrontier).pop();
+		((Stack<Spot>) myFrontier).push(currSpot);
 		return isSearchOver();
 	}
 
