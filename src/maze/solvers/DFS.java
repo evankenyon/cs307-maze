@@ -8,10 +8,8 @@ import maze.model.Spot;
 
 /**
  * Purpose (comment borrowed from Prof. Duvall): This class represents a Depth-First maze search algorithm.
- * Assumptions:
- * Dependencies:
- * Example:
- * Other details:
+ * Dependencies: List, Stack, Maze, Spot, solvers
+ * Example: Construct a DFS maze search algorithm to solve a Maze object, which is displayed with MazeDisplay
  *
  * @author Evan Kenyon
  */

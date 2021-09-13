@@ -6,11 +6,13 @@ import maze.model.Spot;
 import java.util.Queue;
 
 /**
- * Purpose:
- * Assumptions:
- * Dependencies:
- * Example:
- * Other details:
+ * Purpose: This class represents the abstraction of a maze search algorithm
+ * whose primary data structure, myFrontier, is a queue of some kind
+ * Assumptions: This class itself is not instantiated
+ * Dependencies: Maze, Spot, Queue, solvers
+ * Example: Create a class that extends this abstract class, and use the provided
+ * methods, as well as the methods that SearchAlgorithm provides, to implement a
+ * queue based algorithm to solve a Maze object, which is displayed with MazeDisplay
  *
  * @Author Evan Kenyon
  */

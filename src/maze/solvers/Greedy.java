@@ -8,10 +8,8 @@ import maze.model.Spot;
 
 /**
  * Purpose (comment borrowed from Prof. Duvall): This class represents a Greedy maze search algorithm.
- * Assumptions:
- * Dependencies:
- * Example:
- * Other details:
+ * Dependencies: java.util, Maze, Spot
+ * Example: Construct a greedy maze search algorithm to solve a Maze object, which is displayed with MazeDisplay
  *
  * @author Evan Kenyon
  */

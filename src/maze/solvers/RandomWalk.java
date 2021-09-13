@@ -11,10 +11,12 @@ import maze.util.Randomness;
 
 /**
  * Purpose (comment borrowed from Prof. Duvall):  This class represents a random maze search algorithm.
- * Assumptions:
- * Dependencies:
- * Example:
- * Other details:
+ * A random maze search algorithm is one that just randomly picks a possible next step, with a preference
+ * for empty spaces
+ * Assumptions: EXPLORE_BIAS is high enough such that the algorithm will solve the maze in a reasonable
+ * amount of time
+ * Dependencies: ArrayList, List, Stack, Maze, Spot, Randomness, solvers
+ * Example: Construct a random maze search algorithm to solve a Maze object, which is displayed with MazeDisplay
  *
  * @author Evan Kenyon
  */
@@ -23,9 +25,7 @@ public class RandomWalk extends SearchAlgorithm {
 	public final double EXPLORE_BIAS = 0.999;
 
 	/**
-	 * Purpose: Construct a random walk maze solving algorithm (i.e. one that
-	 * just randomly picks a possible next step, with a slight preference for
-	 * empty spaces)
+	 * Purpose: Construct a random walk maze solving algorithm
 	 * @param maze the maze that represents the maze that is displayed
 	 *             (i.e. it contains the underlying logic)
 	 */

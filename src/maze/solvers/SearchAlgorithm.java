@@ -11,10 +11,10 @@ import java.util.Map;
 
 /**
  * Purpose (comment borrowed from Prof. Duvall): This class represents the abstraction of a maze search algorithm.
- * Assumptions:
- * Dependencies:
- * Example:
- * Other details:
+ * Assumptions: This class itself is not instantiated
+ * Dependencies: Maze, Spot, Collection, HashMap, List, Map
+ * Example: Create a class that extends this abstract class, and use the provided methods to implement a search
+ * algorithm to solve a Maze object, which is displayed with MazeDisplay
  *
  * @author Evan Kenyon
  */
@@ -33,6 +33,9 @@ public abstract class SearchAlgorithm {
 
 	/**
 	 * Purpose (comment borrowed from Prof. Duvall): Create an algorithm with its name.
+	 * @param description the name of this algorithm
+	 * @param maze the maze that represents the maze that is displayed
+	 *             (i.e. it contains the underlying logic)
 	 */
 	public SearchAlgorithm (String description, Maze maze) {
 		myMaze = maze;
@@ -49,7 +52,7 @@ public abstract class SearchAlgorithm {
 
 	/**
 	 * Purpose (comment borrowed from Prof. Duvall): Take one step searching for solution path for the maze.
-	 * Assumptions:
+	 * Assumptions: Implemented in SearchAlgorithm subclasses
 	 * @return true if goal has been found or no more paths possible (comment borrowed from Prof. Duvall)
 	 */
 	public abstract boolean step ();

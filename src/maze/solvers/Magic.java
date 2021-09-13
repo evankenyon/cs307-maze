@@ -10,10 +10,10 @@ import maze.util.Randomness;
 
 /**
  * Purpose (comment borrowed from Prof. Duvall): This class represents a Magic maze search algorithm.
- * Assumptions:
- * Dependencies:
- * Example:
- * Other details:
+ * A Magic maze search algorithm is one that is equivalent to a greedy algorithm except it ignores walls
+ * and can go through them
+ * Dependencies: ArrayList, List, PriorityQueue, Maze, Spot, Randomness, solvers
+ * Example: Construct a magic maze search algorithm to solve a Maze object, which is displayed with MazeDisplay
  *
  * @author Evan Kenyon
  */
@@ -23,8 +23,7 @@ public class Magic extends QueueSearchAlgorithm {
 	private List<Spot> visitedSpots;
 
 	/**
-	 * Purpose: Construct a magic maze solving algorithm (i.e. one that is equivalent to a greedy
-	 * algorithm except it ignores walls and can go through them)
+	 * Purpose: Construct a magic maze solving algorithm (described above)
 	 * @param maze the maze that represents the maze that is displayed
 	 *             (i.e. it contains the underlying logic)
 	 */
