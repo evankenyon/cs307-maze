@@ -13,14 +13,12 @@ import maze.model.Spot;
  */
 public class DFS extends SearchAlgorithm {
 	public static final String TITLE = "Depth-First";
-	private boolean reachedEnd;
 
 	public DFS (Maze maze) {
 		super(TITLE, maze);
 		myFrontier = new Stack<>();
 		((Stack<Spot>) myFrontier).push(currSpot);
 		incrementCurrMyFrontierSize();
-		reachedEnd = false;
 	}
 
 	/**
@@ -34,15 +32,16 @@ public class DFS extends SearchAlgorithm {
 		Spot next = chooseNextSpot(neighbors);
 		// mark next step, if it exists
 		markNextStep(next);
+		currSteps++;
 		// update current spot
 		return updateCurrentSpot();
 	}
 
 	private boolean updateCurrentSpot() {
 		currSpot = ((Stack<Spot>) getMyFrontier()).peek();
-		if(isSearchSuccessful()) {
-			System.out.println(numBacktracks);
-		}
+//		if(isSearchSuccessful()) {
+//			System.out.println(numBacktracks);
+//		}
 		return isSearchOver();
 	}
 
@@ -54,14 +53,11 @@ public class DFS extends SearchAlgorithm {
 			reachedEnd = false;
 		}
 		else {
-			if(!reachedEnd) {
-				System.out.println("Test");
-				numBacktracks++;
-				reachedEnd = true;
-			}
+			incrementNumBacktracks();
 			currSpot.markAsVisited();
 			((Stack<Spot>) myFrontier).pop();
 			decrementCurrMyFrontierSize();
 		}
+		currSteps++;
 	}
 }

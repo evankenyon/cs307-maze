@@ -44,7 +44,9 @@ public class RandomWalk extends SearchAlgorithm {
 		// prefer exploring empty paths over visited ones
 		if (!empties.isEmpty() && Randomness.isRandomEnough(EXPLORE_BIAS)) {
 			next = Randomness.getRandomElement(empties);
+			reachedEnd = false;
 		} else {
+			incrementNumBacktracks();
 			// guaranteed to be at least one possible, even if it is last spot visited
 			next = Randomness.getRandomElement(possibles);
 		}
@@ -75,6 +77,7 @@ public class RandomWalk extends SearchAlgorithm {
 		currSpot = next;
 		((Stack<Spot>) myFrontier).pop();
 		((Stack<Spot>) myFrontier).push(currSpot);
+		currSteps++;
 		return isSearchOver();
 	}
 

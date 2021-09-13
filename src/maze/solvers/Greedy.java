@@ -38,7 +38,8 @@ public class Greedy extends QueueSearchAlgorithm {
 		Collections.sort(neighbors);
 		Spot next = chooseNextSpot(neighbors);
 		markNextStep(next);
-		return updateCurrentSpot();
+		updateCurrentSpot();
+		return false;
 	}
 
 }

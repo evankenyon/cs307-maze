@@ -17,7 +17,7 @@ public abstract class QueueSearchAlgorithm extends SearchAlgorithm{
     }
 
     protected boolean colorSuccessfulPathFound() {
-        if (isSearchOver()) {
+        if(isSearchOver()) {
             markPath();
             return true;
         }
@@ -31,16 +31,18 @@ public abstract class QueueSearchAlgorithm extends SearchAlgorithm{
             myFrontier.add(next);
             incrementCurrMyFrontierSize();
             myPaths.put(next, currSpot);
+            reachedEnd = false;
         }
         else {
+            incrementNumBacktracks();
             currSpot.markAsVisited();
             ((Queue<Spot>) getMyFrontier()).remove();
             decrementCurrMyFrontierSize();
         }
+        currSteps++;
     }
 
-    protected boolean updateCurrentSpot() {
+    protected void updateCurrentSpot() {
         currSpot = ((Queue<Spot>) getMyFrontier()).peek();
-        return false;
     }
 }

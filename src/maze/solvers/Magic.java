@@ -42,7 +42,8 @@ public class Magic extends QueueSearchAlgorithm {
 		// choose next spot to explore -- magic means next spot could be a wall!
 		Spot next = chooseNextSpot(neighbors);
 		markNextStep(next);
-		return updateCurrentSpot();
+		updateCurrentSpot();
+		return false;
 	}
 
 	@Override

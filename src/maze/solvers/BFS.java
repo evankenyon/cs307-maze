@@ -34,6 +34,6 @@ public class BFS extends QueueSearchAlgorithm {
 		Spot next = chooseNextSpot(neighbors);
 		markNextStep(next);
 		updateCurrentSpot();
-		return updateCurrentSpot();
+		return false;
 	}
 }

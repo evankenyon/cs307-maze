@@ -25,6 +25,8 @@ public abstract class SearchAlgorithm {
 	protected int currMyFrontierSize;
 	protected int maxMyFrontierSize;
 	protected int numBacktracks;
+	protected boolean reachedEnd;
+	protected int currSteps;
 	// trail of all spots can be used to recreate chosen path
 	protected Map<Spot, Spot> myPaths;
 
@@ -40,15 +42,15 @@ public abstract class SearchAlgorithm {
 		currMyFrontierSize = 0;
 		maxMyFrontierSize = 0;
 		numBacktracks = 0;
+		reachedEnd = false;
+		currSteps = 0;
 	}
 
 	/**
 	 * Take one step searching for solution path for the maze.
 	 * @return true if goal has been found or no more paths possible
 	 */
-	public boolean step () {
-		return false;
-	}
+	public abstract boolean step ();
 
 	/**
 	 * @see Object#toString()
@@ -56,6 +58,10 @@ public abstract class SearchAlgorithm {
 	@Override
 	public String toString () {
 		return myDescription;
+	}
+
+	public int getCurrSteps() {
+		return currSteps;
 	}
 
 	public int getMaxMyFrontierSize() {
@@ -70,10 +76,19 @@ public abstract class SearchAlgorithm {
 		return numBacktracks;
 	}
 
+	protected void incrementNumBacktracks(){
+		if(!reachedEnd) {
+			numBacktracks++;
+			reachedEnd = true;
+		}
+	}
+
+
 	// When the search is over, color the chosen correct path using trail of successful spots
 	protected void markPath () {
 		Spot step = myMaze.getGoal();
 		while (step != null) {
+			step.markAsPath();
 			step = myPaths.get(step);
 		}
 	}
