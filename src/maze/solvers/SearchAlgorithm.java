@@ -10,15 +10,12 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * This class represents the abstraction of a maze search algorithm.
+ * Purpose (comment borrowed from Prof. Duvall): This class represents the abstraction of a maze search algorithm.
  *
- * @author YOUR NAME HERE
+ * @author Evan Kenyon
  */
 public abstract class SearchAlgorithm {
-	// name for this search algorithm
 	private final String myDescription;
-
-	// data structure used to keep search frontier
 	protected Collection<Spot> myFrontier;
 	protected Spot currSpot;
 	protected Maze myMaze;
@@ -83,8 +80,6 @@ public abstract class SearchAlgorithm {
 		}
 	}
 
-
-	// When the search is over, color the chosen correct path using trail of successful spots
 	protected void markPath () {
 		Spot step = myMaze.getGoal();
 		while (step != null) {
@@ -106,10 +101,8 @@ public abstract class SearchAlgorithm {
 		return myFrontier;
 	}
 
-	// Search is over and unsuccessful if there are no more fringe points to consider.
-	// Search is over and successful if the current point is the same as the goal.
 	protected boolean isSearchOver () {
-		return myFrontier.isEmpty() || isSearchSuccessful();
+		 return isSearchUnsuccessful() || isSearchSuccessful();
 	}
 
 	protected void incrementCurrMyFrontierSize() {
@@ -121,5 +114,9 @@ public abstract class SearchAlgorithm {
 
 	protected void decrementCurrMyFrontierSize() {
 		currMyFrontierSize--;
+	}
+
+	private boolean isSearchUnsuccessful() {
+		return myFrontier.isEmpty();
 	}
 }

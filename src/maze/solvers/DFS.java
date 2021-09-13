@@ -7,9 +7,9 @@ import maze.model.Spot;
 
 
 /**
- * This class represents a Depth-First maze search algorithm.
+ * Purpose (comment borrowed from Prof. Duvall): This class represents a Depth-First maze search algorithm.
  *
- * @author YOUR NAME HERE
+ * @author Evan Kenyon
  */
 public class DFS extends SearchAlgorithm {
 	public static final String TITLE = "Depth-First";
@@ -26,22 +26,15 @@ public class DFS extends SearchAlgorithm {
 	 */
 	@Override
 	public boolean step () {
-		// find possible next steps
 		List<Spot> neighbors = myMaze.getNeighbors(currSpot);
-		// choose next spot to explore
 		Spot next = chooseNextSpot(neighbors);
-		// mark next step, if it exists
 		markNextStep(next);
 		currSteps++;
-		// update current spot
 		return updateCurrentSpot();
 	}
 
 	private boolean updateCurrentSpot() {
 		currSpot = ((Stack<Spot>) getMyFrontier()).peek();
-//		if(isSearchSuccessful()) {
-//			System.out.println(numBacktracks);
-//		}
 		return isSearchOver();
 	}
 

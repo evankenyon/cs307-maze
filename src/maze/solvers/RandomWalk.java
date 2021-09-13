@@ -10,9 +10,9 @@ import maze.util.Randomness;
 
 
 /**
- * This class represents a random maze search algorithm.
+ * Purpose (comment borrowed from Prof. Duvall):  This class represents a random maze search algorithm.
  *
- * @author YOUR NAME HERE
+ * @author Evan Kenyon
  */
 public class RandomWalk extends SearchAlgorithm {
 	public static final String TITLE = "Random Walk";

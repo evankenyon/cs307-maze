@@ -7,7 +7,7 @@ import java.util.Queue;
 
 public abstract class QueueSearchAlgorithm extends SearchAlgorithm{
     /**
-     * Create an algorithm with its name.
+     * Purpose:
      *
      * @param description
      * @param maze
@@ -23,7 +23,6 @@ public abstract class QueueSearchAlgorithm extends SearchAlgorithm{
         }
         return false;
     }
-
 
     protected void markNextStep(Spot next) {
         if (next != null) {

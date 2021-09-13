@@ -9,21 +9,20 @@ import maze.util.Randomness;
 
 
 /**
- * This class represents a Magic maze search algorithm.
+ * Purpose (comment borrowed from Prof. Duvall): This class represents a Magic maze search algorithm.
  *
- * @author YOUR NAME HERE
+ * @author Evan Kenyon
  */
 public class Magic extends QueueSearchAlgorithm {
 	public static final String TITLE = "Magic";
 
 	private List<Spot> visitedSpots;
 
-	// data structure used to keep search frontier -- use a priority queue
 	public Magic (Maze maze) {
 		super(TITLE, maze);
 		myFrontier = new PriorityQueue<>();
 		((PriorityQueue<Spot>) myFrontier).add(currSpot);
-		visitedSpots = new ArrayList<Spot>();
+		visitedSpots = new ArrayList<>();
 		visitedSpots.add(currSpot);
 		incrementCurrMyFrontierSize();
 	}
@@ -33,13 +32,10 @@ public class Magic extends QueueSearchAlgorithm {
 	 */
 	@Override
 	public boolean step () {
-		// color successful path found
 		if (colorSuccessfulPathFound())  {
 			return true;
 		}
-		// find possible next steps
 		List<Spot> neighbors = myMaze.getNeighbors(currSpot);
-		// choose next spot to explore -- magic means next spot could be a wall!
 		Spot next = chooseNextSpot(neighbors);
 		markNextStep(next);
 		updateCurrentSpot();

@@ -7,9 +7,9 @@ import maze.model.Spot;
 
 
 /**
- * This class represents a Greedy maze search algorithm.
+ * Purpose (comment borrowed from Prof. Duvall): This class represents a Greedy maze search algorithm.
  *
- * @author YOUR NAME HERE
+ * @author Evan Kenyon
  */
 public class Greedy extends QueueSearchAlgorithm {
 	public static final String TITLE = "Greedy";
