@@ -10,6 +10,10 @@ import maze.util.Randomness;
 
 /**
  * Purpose (comment borrowed from Prof. Duvall): This class represents a Magic maze search algorithm.
+ * Assumptions:
+ * Dependencies:
+ * Example:
+ * Other details:
  *
  * @author Evan Kenyon
  */
@@ -18,6 +22,11 @@ public class Magic extends QueueSearchAlgorithm {
 
 	private List<Spot> visitedSpots;
 
+	/**
+	 * Purpose:
+	 * Assumptions:
+	 * @param maze
+	 */
 	public Magic (Maze maze) {
 		super(TITLE, maze);
 		myFrontier = new PriorityQueue<>();

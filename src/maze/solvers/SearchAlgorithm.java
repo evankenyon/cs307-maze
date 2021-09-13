@@ -11,6 +11,10 @@ import java.util.Map;
 
 /**
  * Purpose (comment borrowed from Prof. Duvall): This class represents the abstraction of a maze search algorithm.
+ * Assumptions:
+ * Dependencies:
+ * Example:
+ * Other details:
  *
  * @author Evan Kenyon
  */
@@ -28,7 +32,7 @@ public abstract class SearchAlgorithm {
 	protected Map<Spot, Spot> myPaths;
 
 	/**
-	 * Create an algorithm with its name.
+	 * Purpose (comment borrowed from Prof. Duvall): Create an algorithm with its name.
 	 */
 	public SearchAlgorithm (String description, Maze maze) {
 		myMaze = maze;
@@ -44,8 +48,9 @@ public abstract class SearchAlgorithm {
 	}
 
 	/**
-	 * Take one step searching for solution path for the maze.
-	 * @return true if goal has been found or no more paths possible
+	 * Purpose (comment borrowed from Prof. Duvall): Take one step searching for solution path for the maze.
+	 * Assumptions:
+	 * @return true if goal has been found or no more paths possible (comment borrowed from Prof. Duvall)
 	 */
 	public abstract boolean step ();
 
@@ -57,18 +62,38 @@ public abstract class SearchAlgorithm {
 		return myDescription;
 	}
 
+	/**
+	 * Purpose:
+	 * Assumptions:
+	 * @return
+	 */
 	public int getCurrSteps() {
 		return currSteps;
 	}
 
+	/**
+	 * Purpose:
+	 * Assumptions:
+	 * @return
+	 */
 	public int getMaxMyFrontierSize() {
 		return maxMyFrontierSize;
 	}
 
+	/**
+	 * Purpose:
+	 * Assumptions:
+	 * @return
+	 */
 	public boolean isSearchSuccessful() {
 		return (currSpot != null && currSpot.equals(myMaze.getGoal()));
 	}
 
+	/**
+	 * Purpose:
+	 * Assumptions:
+	 * @return
+	 */
 	public int getNumBacktracks() {
 		return numBacktracks;
 	}

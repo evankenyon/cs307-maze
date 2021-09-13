@@ -8,12 +8,21 @@ import maze.model.Spot;
 
 /**
  * Purpose (comment borrowed from Prof. Duvall): This class represents a Greedy maze search algorithm.
+ * Assumptions:
+ * Dependencies:
+ * Example:
+ * Other details:
  *
  * @author Evan Kenyon
  */
 public class Greedy extends QueueSearchAlgorithm {
 	public static final String TITLE = "Greedy";
 
+	/**
+	 * Purpose:
+	 * Assumptions:
+	 * @param maze
+	 */
 	public Greedy (Maze maze) {
 		super(TITLE, maze);
 		myMaze = maze;

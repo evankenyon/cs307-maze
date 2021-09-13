@@ -8,6 +8,10 @@ import maze.model.Spot;
 
 /**
  * Purpose (comment borrowed from Prof. Duvall): This class represents a Depth-First maze search algorithm.
+ * Assumptions:
+ * Dependencies:
+ * Example:
+ * Other details:
  *
  * @author Evan Kenyon
  */

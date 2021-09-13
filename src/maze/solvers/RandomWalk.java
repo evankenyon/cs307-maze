@@ -11,6 +11,10 @@ import maze.util.Randomness;
 
 /**
  * Purpose (comment borrowed from Prof. Duvall):  This class represents a random maze search algorithm.
+ * Assumptions:
+ * Dependencies:
+ * Example:
+ * Other details:
  *
  * @author Evan Kenyon
  */
@@ -18,7 +22,11 @@ public class RandomWalk extends SearchAlgorithm {
 	public static final String TITLE = "Random Walk";
 	public final double EXPLORE_BIAS = 0.999;
 
-
+	/**
+	 * Purpose:
+	 * Assumptions:
+	 * @param maze
+	 */
 	public RandomWalk (Maze maze) {
 		super(TITLE, maze);
 		myFrontier = new Stack<>();

@@ -5,10 +5,20 @@ import maze.model.Spot;
 
 import java.util.Queue;
 
+/**
+ * Purpose:
+ * Assumptions:
+ * Dependencies:
+ * Example:
+ * Other details:
+ *
+ * @Author Evan Kenyon
+ */
 public abstract class QueueSearchAlgorithm extends SearchAlgorithm{
+
     /**
      * Purpose:
-     *
+
      * @param description
      * @param maze
      */
