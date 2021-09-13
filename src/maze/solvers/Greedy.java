@@ -19,9 +19,9 @@ public class Greedy extends QueueSearchAlgorithm {
 	public static final String TITLE = "Greedy";
 
 	/**
-	 * Purpose:
-	 * Assumptions:
-	 * @param maze
+	 * Purpose: Construct a Greedy maze solving algorithm
+	 * @param maze the maze that represents the maze that is displayed
+	 *             (i.e. it contains the underlying logic)
 	 */
 	public Greedy (Maze maze) {
 		super(TITLE, maze);

@@ -63,36 +63,35 @@ public abstract class SearchAlgorithm {
 	}
 
 	/**
-	 * Purpose:
-	 * Assumptions:
-	 * @return
+	 * Purpose: Get the current number of steps this search algorithm has taken
+	 * Assumptions: currSteps is properly incremented in all SearchAlgorithm subclasses
+	 * @return the current number of steps this search algorithm has taken
 	 */
 	public int getCurrSteps() {
 		return currSteps;
 	}
 
 	/**
-	 * Purpose:
-	 * Assumptions:
-	 * @return
+	 * Purpose: Get the maximum size of the myFrontier data structure for this search algorithm
+	 * Assumptions: incrementCurrMyFrontierSize is called appropriately in SearchAlgorithm subclasses
+	 * @return the maximum size of the myFrontier data structure for this search algorithm
 	 */
 	public int getMaxMyFrontierSize() {
 		return maxMyFrontierSize;
 	}
 
 	/**
-	 * Purpose:
-	 * Assumptions:
-	 * @return
+	 * Purpose: Return if the search was successful
+	 * @return if the search was successful
 	 */
 	public boolean isSearchSuccessful() {
 		return (currSpot != null && currSpot.equals(myMaze.getGoal()));
 	}
 
 	/**
-	 * Purpose:
-	 * Assumptions:
-	 * @return
+	 * Purpose: Get the number of times this search algorithm has had to backtrack
+	 * Assumptions: numBacktracks is appropriately incremented in SearchAlgorithm subclasses
+	 * @return the number of times this search algorithm has had to backtrack
 	 */
 	public int getNumBacktracks() {
 		return numBacktracks;

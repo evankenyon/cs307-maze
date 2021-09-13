@@ -23,9 +23,10 @@ public class Magic extends QueueSearchAlgorithm {
 	private List<Spot> visitedSpots;
 
 	/**
-	 * Purpose:
-	 * Assumptions:
-	 * @param maze
+	 * Purpose: Construct a magic maze solving algorithm (i.e. one that is equivalent to a greedy
+	 * algorithm except it ignores walls and can go through them)
+	 * @param maze the maze that represents the maze that is displayed
+	 *             (i.e. it contains the underlying logic)
 	 */
 	public Magic (Maze maze) {
 		super(TITLE, maze);

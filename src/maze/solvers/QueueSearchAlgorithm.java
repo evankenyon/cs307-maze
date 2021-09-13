@@ -17,10 +17,11 @@ import java.util.Queue;
 public abstract class QueueSearchAlgorithm extends SearchAlgorithm{
 
     /**
-     * Purpose:
-
-     * @param description
-     * @param maze
+     * Purpose: Construct a maze solving algorithm whose primary data structure,
+     * myFrontier, is a queue of some kind
+     * @param description the name of this algorithm
+     * @param maze the maze that represents the maze that is displayed
+     *             (i.e. it contains the underlying logic)
      */
     public QueueSearchAlgorithm(String description, Maze maze) {
         super(description, maze);

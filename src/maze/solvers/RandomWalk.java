@@ -23,9 +23,11 @@ public class RandomWalk extends SearchAlgorithm {
 	public final double EXPLORE_BIAS = 0.999;
 
 	/**
-	 * Purpose:
-	 * Assumptions:
-	 * @param maze
+	 * Purpose: Construct a random walk maze solving algorithm (i.e. one that
+	 * just randomly picks a possible next step, with a slight preference for
+	 * empty spaces)
+	 * @param maze the maze that represents the maze that is displayed
+	 *             (i.e. it contains the underlying logic)
 	 */
 	public RandomWalk (Maze maze) {
 		super(TITLE, maze);

@@ -18,6 +18,11 @@ import maze.model.Spot;
 public class DFS extends SearchAlgorithm {
 	public static final String TITLE = "Depth-First";
 
+	/**
+	 * Purpose: Construct a DFS maze solving algorithm
+	 * @param maze the maze that represents the maze that is displayed
+	 *             (i.e. it contains the underlying logic)
+	 */
 	public DFS (Maze maze) {
 		super(TITLE, maze);
 		myFrontier = new Stack<>();

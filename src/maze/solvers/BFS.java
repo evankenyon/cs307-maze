@@ -19,9 +19,9 @@ public class BFS extends QueueSearchAlgorithm {
 	public static final String TITLE = "Breadth-First";
 
 	/**
-	 * Purpose:
-	 * Assumptions:
-	 * @param maze
+	 * Purpose: Construct a BFS maze solving algorithm
+	 * @param maze the maze that represents the maze that is displayed
+	 *             (i.e. it contains the underlying logic)
 	 */
 	public BFS (Maze maze) {
 		super(TITLE, maze);
