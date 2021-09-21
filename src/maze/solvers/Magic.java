@@ -3,6 +3,7 @@ package maze.solvers;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.PriorityQueue;
+
 import maze.model.Maze;
 import maze.model.Spot;
 import maze.util.Randomness;
@@ -30,7 +31,7 @@ public class Magic extends QueueSearchAlgorithm {
 	public Magic (Maze maze) {
 		super(TITLE, maze);
 		myFrontier = new PriorityQueue<>();
-		((PriorityQueue<Spot>) myFrontier).add(currSpot);
+		myFrontier.add(currSpot);
 		visitedSpots = new ArrayList<>();
 		visitedSpots.add(currSpot);
 		incrementCurrMyFrontierSize();

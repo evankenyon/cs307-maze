@@ -1,6 +1,7 @@
 package maze.solvers;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Stack;
 
@@ -8,6 +9,7 @@ import maze.model.Maze;
 import maze.model.Spot;
 import maze.util.Randomness;
 
+//Implement mark path
 
 /**
  * Purpose (comment borrowed from Prof. Duvall):  This class represents a random maze search algorithm.
@@ -24,6 +26,8 @@ public class RandomWalk extends SearchAlgorithm {
 	public static final String TITLE = "Random Walk";
 	public final double EXPLORE_BIAS = 0.999;
 
+	private Stack<Spot> myFrontier;
+
 	/**
 	 * Purpose: Construct a random walk maze solving algorithm
 	 * @param maze the maze that represents the maze that is displayed
@@ -32,7 +36,7 @@ public class RandomWalk extends SearchAlgorithm {
 	public RandomWalk (Maze maze) {
 		super(TITLE, maze);
 		myFrontier = new Stack<>();
-		((Stack<Spot>) myFrontier).push(currSpot);
+		myFrontier.push(currSpot);
 		incrementCurrMyFrontierSize();
 	}
 
@@ -47,6 +51,11 @@ public class RandomWalk extends SearchAlgorithm {
 		Spot next = getNextSpot(empties, possibles);
 		next.markAsPath();
 		return updateCurrentSpot(next);
+	}
+
+	@Override
+	protected boolean isSearchUnsuccessful() {
+		return myFrontier.isEmpty();
 	}
 
 	private Spot getNextSpot(List<Spot> empties, List<Spot> possibles) {
@@ -85,8 +94,8 @@ public class RandomWalk extends SearchAlgorithm {
 	private boolean updateCurrentSpot(Spot next) {
 		currSpot.markAsVisited();
 		currSpot = next;
-		((Stack<Spot>) myFrontier).pop();
-		((Stack<Spot>) myFrontier).push(currSpot);
+		myFrontier.pop();
+		myFrontier.push(currSpot);
 		currSteps++;
 		return isSearchOver();
 	}

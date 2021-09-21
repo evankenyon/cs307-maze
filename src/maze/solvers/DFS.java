@@ -16,6 +16,8 @@ import maze.model.Spot;
 public class DFS extends SearchAlgorithm {
 	public static final String TITLE = "Depth-First";
 
+	private Stack<Spot> myFrontier;
+
 	/**
 	 * Purpose: Construct a DFS maze solving algorithm
 	 * @param maze the maze that represents the maze that is displayed
@@ -24,7 +26,7 @@ public class DFS extends SearchAlgorithm {
 	public DFS (Maze maze) {
 		super(TITLE, maze);
 		myFrontier = new Stack<>();
-		((Stack<Spot>) myFrontier).push(currSpot);
+		myFrontier.push(currSpot);
 		incrementCurrMyFrontierSize();
 	}
 
@@ -41,23 +43,28 @@ public class DFS extends SearchAlgorithm {
 	}
 
 	private boolean updateCurrentSpot() {
-		currSpot = ((Stack<Spot>) getMyFrontier()).peek();
+		currSpot = myFrontier.peek();
 		return isSearchOver();
 	}
 
 	private void markNextStep(Spot next) {
 		if (next != null) {
 			next.markAsPath();
-			((Stack<Spot>) myFrontier).push(next);
+			myFrontier.push(next);
 			incrementCurrMyFrontierSize();
 			reachedEnd = false;
 		}
 		else {
 			incrementNumBacktracks();
 			currSpot.markAsVisited();
-			((Stack<Spot>) myFrontier).pop();
+			myFrontier.pop();
 			decrementCurrMyFrontierSize();
 		}
 		currSteps++;
+	}
+
+	@Override
+	protected boolean isSearchUnsuccessful() {
+		return myFrontier.isEmpty();
 	}
 }

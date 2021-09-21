@@ -4,7 +4,6 @@ package maze.solvers;
 import maze.model.Maze;
 import maze.model.Spot;
 
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,7 +19,6 @@ import java.util.Map;
  */
 public abstract class SearchAlgorithm {
 	private final String myDescription;
-	protected Collection<Spot> myFrontier;
 	protected Spot currSpot;
 	protected Maze myMaze;
 	protected int currMyFrontierSize;
@@ -124,9 +122,7 @@ public abstract class SearchAlgorithm {
 		return null;
 	}
 
-	protected Collection<Spot> getMyFrontier() {
-		return myFrontier;
-	}
+	protected abstract boolean isSearchUnsuccessful();
 
 	protected boolean isSearchOver () {
 		 return isSearchUnsuccessful() || isSearchSuccessful();
@@ -143,7 +139,4 @@ public abstract class SearchAlgorithm {
 		currMyFrontierSize--;
 	}
 
-	private boolean isSearchUnsuccessful() {
-		return myFrontier.isEmpty();
-	}
 }

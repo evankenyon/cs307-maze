@@ -25,7 +25,7 @@ public class Greedy extends QueueSearchAlgorithm {
 		super(TITLE, maze);
 		myMaze = maze;
 		myFrontier = new PriorityQueue<>();
-		((PriorityQueue<Spot>) myFrontier).add(currSpot);
+		myFrontier.add(currSpot);
 		incrementCurrMyFrontierSize();
 	}
 
@@ -36,7 +36,6 @@ public class Greedy extends QueueSearchAlgorithm {
 	@Override
 	public boolean step () {
 		if(colorSuccessfulPathFound()) {
-			System.out.println(getMaxMyFrontierSize());
 			return true;
 		}
 		// find possible next steps
